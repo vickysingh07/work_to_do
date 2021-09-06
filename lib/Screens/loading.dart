@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:work_to_do/widgets/task_list.dart';
+import 'package:work_to_do/widgets/task_tile.dart';
 import 'addtask.dart';
 
 class Loading_Screen extends StatefulWidget {
@@ -19,6 +19,7 @@ class _Loading_ScreenState extends State<Loading_Screen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF4FC3F7),
+        //backgroundColor: Colors.lightBlue,
          centerTitle: true,
         title: Shimmer.fromColors(
         baseColor: Colors.pinkAccent,
@@ -35,13 +36,18 @@ class _Loading_ScreenState extends State<Loading_Screen> {
       ),
       ),
     floatingActionButton: FloatingActionButton(
+      backgroundColor: Colors.blue,
       child: const Icon(Icons.add,
       color: Colors.white,
       size: 30,),
       onPressed: (){
-        showModalBottomSheet(context: context, builder: (context)=> const AddTask());
+        showModalBottomSheet(context: context, builder: (context)=> AddTask(
+
+             newTaskTitle: '',addTaskCallback: (){},
+        ));
       },
     ),
+
       body: Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -53,6 +59,8 @@ class _Loading_ScreenState extends State<Loading_Screen> {
           ]
         )
       ),
+
+        child:  const Task_List(),
       ),
     );
   }

@@ -3,14 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 
-class AddTask extends StatefulWidget {
-  const AddTask({Key? key}) : super(key: key);
-
-  @override
-  _AddTaskState createState() => _AddTaskState();
-}
-
-class _AddTaskState extends State<AddTask> {
+class AddTask extends StatelessWidget {
+  // const AddTask({Key? key}) : super(key: key);
+  final Function addTaskCallback;
+  AddTask({required this.newTaskTitle, required this.addTaskCallback});
+  String newTaskTitle = '';
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,10 +39,13 @@ class _AddTaskState extends State<AddTask> {
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
                       width: 1, color: Colors.blue, style: BorderStyle.solid)),
-              child: const TextField(
-                //autofocus: true,
+              child: TextField(
+                autofocus: true,
+                onChanged: (newText){
+                  newTaskTitle = newText;
+                },
                 textAlign: TextAlign.center,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'Write Your Task',
                   hintStyle: TextStyle(
                     fontSize: 18,
@@ -57,12 +57,13 @@ class _AddTaskState extends State<AddTask> {
             ),
             const SizedBox(height: 18,),
             FloatingActionButton(
+              backgroundColor: Colors.blue,
                 child: const Icon(
                     Icons.check,
                 size: 30,
                 ),
                 onPressed:(){
-
+                addTaskCallback(newTaskTitle);
             }
             )
           ],

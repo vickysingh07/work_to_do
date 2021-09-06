@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'WorkToDo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        //primarySwatch: Colors.lightBlue,
       ),
       home: Loading_Screen(),
     );
