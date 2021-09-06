@@ -3,6 +3,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:work_to_do/widgets/task_list.dart';
 import 'package:work_to_do/widgets/task_tile.dart';
+import 'package:work_to_do/widgets/tasks.dart';
 import 'addtask.dart';
 
 class Loading_Screen extends StatefulWidget {
@@ -13,6 +14,10 @@ class Loading_Screen extends StatefulWidget {
 }
 
 class _Loading_ScreenState extends State<Loading_Screen> {
+  List<Tasks>tasks = [
+    Tasks(name:'buy milk'),
+    Tasks(name: 'buy banana')
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +54,7 @@ class _Loading_ScreenState extends State<Loading_Screen> {
     ),
 
       body: Container(
+        padding: const EdgeInsets.only(top: 11),
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topRight,
@@ -60,7 +66,7 @@ class _Loading_ScreenState extends State<Loading_Screen> {
         )
       ),
 
-        child:  const Task_List(),
+        child:  Task_List(tasks),
       ),
     );
   }

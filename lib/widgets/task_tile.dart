@@ -13,16 +13,22 @@ class Task_tile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
           title: ElevatedButton(
+              style: ButtonStyle(
+                  shape: MaterialStateProperty.all<
+                      RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: const BorderSide(color: Colors.grey)))),
             onPressed: (){},
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                  Text(taskname,
                   style: GoogleFonts.alice(
-                     // decoration: (isChecked)? TextDecoration.lineThrough : null,
+                      decoration: (isChecked)? TextDecoration.lineThrough : null,
                   textStyle: const TextStyle(
                       fontSize: 20,
-                      color: Colors.white
+                      color: Colors.limeAccent
                   )
                   ),),
              Theme(
