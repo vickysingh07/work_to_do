@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:work_to_do/widgets/task_list.dart';
-import 'package:work_to_do/widgets/task_tile.dart';
 import 'package:work_to_do/widgets/tasks.dart';
 import 'addtask.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Loading_Screen extends StatefulWidget {
-  //const Home({Key? key}) : super(key: key);
 
   @override
   State<Loading_Screen> createState() => _Loading_ScreenState();
@@ -24,7 +23,6 @@ class _Loading_ScreenState extends State<Loading_Screen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF4FC3F7),
-        //backgroundColor: Colors.lightBlue,
          centerTitle: true,
         title: Shimmer.fromColors(
         baseColor: Colors.pinkAccent,
@@ -46,13 +44,24 @@ class _Loading_ScreenState extends State<Loading_Screen> {
       color: Colors.white,
       size: 30,),
       onPressed: (){
-        showModalBottomSheet(context: context, builder: (context)=> AddTask(
-
-             newTaskTitle: '',addTaskCallback: (){},
-        ));
+        showModalBottomSheet(context: context, builder: (context)=> AddTask(addTaskCallback:(NewTaskTitle){
+          setState(() {
+            NewTaskTitle!=''?tasks.add(Tasks(name: NewTaskTitle)):Fluttertoast.showToast(
+                msg: "Please add a task",
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 4,
+                backgroundColor: Colors.red,
+                textColor: Colors.black87,
+                fontSize: 16.0
+            );
+          });
+          Navigator.pop(context);
+        },
+        )
+        );
       },
     ),
-
       body: Container(
         padding: const EdgeInsets.only(top: 11),
       decoration: const BoxDecoration(

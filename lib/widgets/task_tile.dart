@@ -13,7 +13,7 @@ class Task_tile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
           title: ElevatedButton(
-              style: ButtonStyle(
+                style: ButtonStyle(
                   shape: MaterialStateProperty.all<
                       RoundedRectangleBorder>(
                       RoundedRectangleBorder(

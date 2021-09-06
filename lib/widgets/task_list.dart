@@ -3,7 +3,6 @@ import 'package:work_to_do/widgets/task_tile.dart';
 import 'package:work_to_do/widgets/tasks.dart';
 
 class Task_List extends StatefulWidget {
-  //const Task_List({Key? key}) : super(key: key);
   List<Tasks>tasks;
   Task_List(this.tasks);
   @override

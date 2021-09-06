@@ -4,12 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 
 class AddTask extends StatelessWidget {
-  // const AddTask({Key? key}) : super(key: key);
-  final Function addTaskCallback;
-  AddTask({required this.newTaskTitle, required this.addTaskCallback});
-  String newTaskTitle = '';
+  Function addTaskCallback;
+  AddTask({required this.addTaskCallback});
+
   @override
   Widget build(BuildContext context) {
+    String newTaskTitle = '';
     return Container(
       color: Colors.blueGrey,
       child: Container(
@@ -63,7 +63,8 @@ class AddTask extends StatelessWidget {
                 size: 30,
                 ),
                 onPressed:(){
-                addTaskCallback(newTaskTitle);
+                addTaskCallback(
+                    newTaskTitle);
             }
             )
           ],
